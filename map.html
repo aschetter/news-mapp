@@ -24,16 +24,20 @@
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         }).addTo(map);
 
-    var hoverStyle = {
+    var mouseOverStyle = {
         "fillOpacity": 0.7
     };
 
-    var defaultStyle = {
-        "fillOpacity": 0.2
+    var mouseOutStyle = {
+        "fillOpacity": 0.3
     };
 
     var pickedStyle = {
         "color": "green"
+    };
+
+    var notPickedStyle = {
+        "color": "blue"
     };
 
     var country = '';
@@ -41,15 +45,16 @@
 
     var geojsonTileLayer = new L.GeoJSON(countriesData, {
         style: function(feature) {
+            fillOpacity: 0.3;
             switch (feature.properties.picked) {
-                case true: return {color: "green"};
-                case false: return {color: "blue"};
+                case true: return {color: 'green'};
+                case false: return {color: 'blue'};
             }
         },
         onEachFeature: function (feature, layer) {
             // layer.bindPopup(feature.properties.name);
             layer.on('mouseover', function () {
-                layer.setStyle(hoverStyle);
+                layer.setStyle(mouseOverStyle);
                 var name = layer.feature.properties.name;
                 var array = name.split(' ');
                 country = array.join('');
@@ -60,16 +65,18 @@
                 // console.log('nprUrl: ' + nprUrl);
             });
             layer.on('mouseout', function () {
-                layer.setStyle(defaultStyle);
+                layer.setStyle(mouseOutStyle);
                 country = '';
                 nprUrl = '';
                 console.log(country);
             });
             layer.on('click', function () {
-                feature.properties.picked
                 if (feature.properties.picked == true) {
                     feature.properties.picked = false;
-                    layer.setStyle(defaultStyle);
+                    layer.setStyle(notPickedStyle);
+                } else {
+                    feature.properties.picked = true;
+                    layer.setStyle(pickedStyle);
                 }
 
 
