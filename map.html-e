@@ -17,48 +17,103 @@
 
     <script type="text/javascript">
 
-        var map = L.map('map').setView([20, 10], 1.5);
+        var map = L.map('map').setView([20, 10], 2);
 
-        L.tileLayer('', {
-        maxZoom: 6
+
+        L.tileLayer('http://{s}.tiles.mapbox.com/v3/aschetter.j63jha01/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         }).addTo(map);
 
-    L.geoJson(countriesData, {
-        onEachFeature: function (data, layer) {
-            layer.on('click', function (e) {
-                console.log(data.properties.name);
-                }
-            )
-        }
-    }).addTo(map);
+    var hoverStyle = {
+        "color": "green",
+        "fillColor": "green",
+        "weight": 3,
+        "opacity": 1,
+        "fillOpacity": 0.5
+    };
+
+    var style = {
+        "color": "blue",
+        "fillColor": "blue",
+        "weight": 3,
+        "opacity": 1,
+        "fillOpacity": 0.5
+    };
+
+        var geojsonTileLayer = new L.GeoJSON(countriesData, {
+            style: style,
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.name);
+                layer.on('mouseover', function () {
+                    layer.setStyle(hoverStyle);
+                    country = layer.feature.properties.name;
+                    console.log(layer.feature.properties.name);
+                });
+                layer.on('mouseout', function () {
+                    layer.setStyle(style);
+                    country = '';
+                    console.log(country);
+                });
+            }
+        });
+        map.addLayer(geojsonTileLayer);
 
 
+        // var news = function (nprUrl) {
+        //     $.getJSON({
+        //         url : nprUrl,
+        //     }).complete(function(data) {
+        //         console.log(data)
+        //     });       
+        // };
+
+        // var nprUrl
+
+        // L.geoJson(countriesData, {
+        //     onEachFeature: function (data, layer) {
+        //         layer.on('click', function () {
+        //             var name = data.properties.name;
+        //             var array = name.split(" ");
+        //             var country = array.join("");
+        //             var nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&apiKey=MDE1NDc4NTQ2MDE0MDY3MzIwMThiNmRhMQ001'
+        //             // news(nprUrl);
+        //             console.log(nprUrl);
+        //             console.log(country);
+        //         });
+        //     }
+        // }).addTo(map);
+
+// function highlightFeature(e) {
+//     var layer = e.target;
+
+//     layer.setStyle({
+//         weight: 5,
+//         color: '#666',
+//         dashArray: '',
+//         fillOpacity: 0.7
+//     });
+
+// }
+
+// L.geoJson(countriesData, {style: style}).addTo(map);
 
 
+// geojson = L.geoJson(statesData, {
+//     style: style,
+//     onEachFeature: onEachFeature
+// }).addTo(map);
 
 
-
-    // L.geoJson(geojsonFeature, {
-    // pointToLayer: function (feature, latlng) {
-    // return L.circleMarker(latlng, geojsonMarkerOptions);
-    // }}).addTo(map);
-
-
-
-
-
-
-
-    // var layer = L.titleLayer(countries_data)
-    // .bindPopup('Hello world!')
-    // .on('click', function() { alert('Clicked on a group!'); })
-    // .addTo(map);
-
-
-    // $(layer).on('click', function () {
-    //     console.log(this);
-
-    // });
+        // $('#map').on('click', function () {
+        //     $.ajax({
+        //         type : 'get',
+        //         url : 'http://api.npr.org/query?searchTerm=yemen&numResults=5&apiKey=MDE1NDc4NTQ2MDE0MDY3MzIwMThiNmRhMQ001',
+        //         dataType : 'json',
+        //     }).complete(function (data) {
+        //         console.log(data)
+        //     }); 
+            
+        // })
 
     </script>
 </body>
