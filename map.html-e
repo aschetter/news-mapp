@@ -13,7 +13,8 @@
 <body>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="world.js"></script>
-     <div id="map" style="height:600px; width:750px"></div>
+    <script src="news.js"></script>
+    <div id="map" style="height:600px; width:750px"></div>
 
     <script type="text/javascript">
 
@@ -39,8 +40,8 @@
         "fillOpacity": 0.2
     };
 
-    var country = ''
-    var nprUrl = ''
+    var country = '';
+    var nprUrl = '';
 
     var geojsonTileLayer = new L.GeoJSON(countriesData, {
         style: style,
@@ -51,7 +52,7 @@
                 var name = layer.feature.properties.name;
                 var array = name.split(' ');
                 country = array.join('');
-                nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&apiKey=MDE1NDc4NTQ2MDE0MDY3MzIwMThiNmRhMQ001'
+                nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&output=JSON&apiKey=MDE1NDc4NTQ2MDE0MDY3MzIwMThiNmRhMQ001'
                 console.log('Name: ' + name);
                 console.log('array: ' + array);
                 console.log('country: ' + country);
@@ -65,12 +66,16 @@
             });
             layer.on('click', function () {
                 $.getJSON(nprUrl).complete(function(data) {
-                    console.log(data)
+                    var link = data.responseJSON.list.story[0].link[2].$text;
+                    var text = data.responseJSON.list.story[0].teaser.$text;
+                    console.log(link);
+                    console.log(text);
                 });       
             })
         }
     });
     map.addLayer(geojsonTileLayer);
+
 
 
         // var news = function (nprUrl) {
