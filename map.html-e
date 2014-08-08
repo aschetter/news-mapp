@@ -13,7 +13,7 @@
 <body>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="world.js"></script>
-    <script src="news.js"></script>
+    <!-- <script src="news.js"></script> -->
     <div id="map" style="height:600px; width:750px"></div>
 
     <script type="text/javascript">
@@ -25,28 +25,29 @@
         }).addTo(map);
 
     var hoverStyle = {
-        // "color": "#0800ff",
-        // "fillColor": "#0800ff",
-        // "weight": 3,
-        // "opacity": 1,
         "fillOpacity": 0.7
     };
 
-    var style = {
-        "color": "#0800ff",
-        "fillColor": "#0800ff",
-        "weight": 3,
-        "opacity": 1,
+    var defaultStyle = {
         "fillOpacity": 0.2
+    };
+
+    var pickedStyle = {
+        "color": "green"
     };
 
     var country = '';
     var nprUrl = '';
 
     var geojsonTileLayer = new L.GeoJSON(countriesData, {
-        style: style,
+        style: function(feature) {
+            switch (feature.properties.picked) {
+                case true: return {color: "green"};
+                case false: return {color: "blue"};
+            }
+        },
         onEachFeature: function (feature, layer) {
-            layer.bindPopup(feature.properties.name);
+            // layer.bindPopup(feature.properties.name);
             layer.on('mouseover', function () {
                 layer.setStyle(hoverStyle);
                 var name = layer.feature.properties.name;
@@ -59,53 +60,41 @@
                 // console.log('nprUrl: ' + nprUrl);
             });
             layer.on('mouseout', function () {
-                layer.setStyle(style);
+                layer.setStyle(defaultStyle);
                 country = '';
                 nprUrl = '';
                 console.log(country);
             });
             layer.on('click', function () {
-                $.getJSON(nprUrl).complete(function(data) {
-                    var link = data.responseJSON.list.story[0].link[2].$text;
-                    var text = data.responseJSON.list.story[0].teaser.$text;
-                    console.log(link);
-                    console.log(text);
-                });       
+                feature.properties.picked
+                if (feature.properties.picked == true) {
+                    feature.properties.picked = false;
+                    layer.setStyle(defaultStyle);
+                }
+
+
+
+
+
+                // var picked = feature.properties.picked;
+                // if (picked == true) {
+                
+                // } else {
+                
+                // }
+                // console.log('Picked: ' + picked)
+                // console.log(feature.properties);
+                // $.getJSON(nprUrl).complete(function(data) {
+                //     var link = data.responseJSON.list.story[0].link[2].$text;
+                //     var text = data.responseJSON.list.story[0].teaser.$text;
+                //     console.log(link);
+                //     console.log(text);
+                // });       
             })
         }
     });
+
     map.addLayer(geojsonTileLayer);
-
-    function LightenDarkenColor(col, amt) {
-  
-    var usePound = false;
-  
-    if (col[0] == "#") {
-        col = col.slice(1);
-        usePound = true;
-    }
- 
-    var num = parseInt(col,16);
- 
-    var r = (num >> 16) + amt;
- 
-    if (r > 255) r = 255;
-    else if  (r < 0) r = 0;
- 
-    var b = ((num >> 8) & 0x00FF) + amt;
- 
-    if (b > 255) b = 255;
-    else if  (b < 0) b = 0;
- 
-    var g = (num & 0x0000FF) + amt;
- 
-    if (g > 255) g = 255;
-    else if (g < 0) g = 0;
- 
-    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
-  
-}
-
 
 
         // var news = function (nprUrl) {
