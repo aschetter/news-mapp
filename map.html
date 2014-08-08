@@ -19,17 +19,16 @@
 
         var map = L.map('map').setView([20, 10], 2);
 
-
         L.tileLayer('http://{s}.tiles.mapbox.com/v3/aschetter.j63jha01/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         }).addTo(map);
 
     var hoverStyle = {
-        "color": "green",
-        "fillColor": "green",
+        "color": "blue",
+        "fillColor": "blue",
         "weight": 3,
         "opacity": 1,
-        "fillOpacity": 0.5
+        "fillOpacity": 0.7
     };
 
     var style = {
@@ -37,34 +36,44 @@
         "fillColor": "blue",
         "weight": 3,
         "opacity": 1,
-        "fillOpacity": 0.5
+        "fillOpacity": 0.2
     };
 
-        var geojsonTileLayer = new L.GeoJSON(countriesData, {
-            style: style,
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.name);
-                layer.on('mouseover', function () {
-                    layer.setStyle(hoverStyle);
-                    country = layer.feature.properties.name;
-                    console.log(layer.feature.properties.name);
-                });
-                layer.on('mouseout', function () {
-                    layer.setStyle(style);
-                    country = '';
-                    console.log(country);
-                });
-            }
-        });
-        map.addLayer(geojsonTileLayer);
+    var country = ''
+    var nprUrl = ''
+
+    var geojsonTileLayer = new L.GeoJSON(countriesData, {
+        style: style,
+        onEachFeature: function (feature, layer) {
+            // layer.bindPopup(feature.properties.name);
+            layer.on('mouseover', function () {
+                layer.setStyle(hoverStyle);
+                var name = layer.feature.properties.name;
+                var array = name.split(' ');
+                country = array.join('');
+                nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&apiKey=PASSWORD'
+                console.log('Name: ' + name);
+                console.log('array: ' + array);
+                console.log('country: ' + country);
+                console.log('nprUrl: ' + nprUrl);
+            });
+            layer.on('mouseout', function () {
+                layer.setStyle(style);
+                country = '';
+                nprUrl = '';
+                console.log(country);
+            });
+            layer.on('click', function () {
+                $.getJSON(nprUrl).complete(function(data) {
+                    console.log(data)
+                });       
+            })
+        }
+    });
+    map.addLayer(geojsonTileLayer);
 
 
         // var news = function (nprUrl) {
-        //     $.getJSON({
-        //         url : nprUrl,
-        //     }).complete(function(data) {
-        //         console.log(data)
-        //     });       
         // };
 
         // var nprUrl
