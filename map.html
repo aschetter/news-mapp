@@ -25,16 +25,16 @@
         }).addTo(map);
 
     var hoverStyle = {
-        "color": "blue",
-        "fillColor": "blue",
-        "weight": 3,
-        "opacity": 1,
+        // "color": "#0800ff",
+        // "fillColor": "#0800ff",
+        // "weight": 3,
+        // "opacity": 1,
         "fillOpacity": 0.7
     };
 
     var style = {
-        "color": "blue",
-        "fillColor": "blue",
+        "color": "#0800ff",
+        "fillColor": "#0800ff",
         "weight": 3,
         "opacity": 1,
         "fillOpacity": 0.2
@@ -46,17 +46,17 @@
     var geojsonTileLayer = new L.GeoJSON(countriesData, {
         style: style,
         onEachFeature: function (feature, layer) {
-            // layer.bindPopup(feature.properties.name);
+            layer.bindPopup(feature.properties.name);
             layer.on('mouseover', function () {
                 layer.setStyle(hoverStyle);
                 var name = layer.feature.properties.name;
                 var array = name.split(' ');
                 country = array.join('');
-                nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&output=JSON&apiKey=PASSWORD'
+                // nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&output=JSON&apiKey=PASSWORD'
                 console.log('Name: ' + name);
                 console.log('array: ' + array);
                 console.log('country: ' + country);
-                console.log('nprUrl: ' + nprUrl);
+                // console.log('nprUrl: ' + nprUrl);
             });
             layer.on('mouseout', function () {
                 layer.setStyle(style);
@@ -75,6 +75,36 @@
         }
     });
     map.addLayer(geojsonTileLayer);
+
+    function LightenDarkenColor(col, amt) {
+  
+    var usePound = false;
+  
+    if (col[0] == "#") {
+        col = col.slice(1);
+        usePound = true;
+    }
+ 
+    var num = parseInt(col,16);
+ 
+    var r = (num >> 16) + amt;
+ 
+    if (r > 255) r = 255;
+    else if  (r < 0) r = 0;
+ 
+    var b = ((num >> 8) & 0x00FF) + amt;
+ 
+    if (b > 255) b = 255;
+    else if  (b < 0) b = 0;
+ 
+    var g = (num & 0x0000FF) + amt;
+ 
+    if (g > 255) g = 255;
+    else if (g < 0) g = 0;
+ 
+    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+  
+}
 
 
 
