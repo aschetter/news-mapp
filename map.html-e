@@ -6,23 +6,60 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title></title>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 </head>
 
 <body>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="world.js"></script>
-     <div id="map" style="height:2000px; width:2200px"></div>
+     <div id="map" style="height:600px; width:750px"></div>
 
     <script type="text/javascript">
 
-        var map = L.map('map').setView([-7, 25], 3);
+        var map = L.map('map').setView([20, 10], 1.5);
 
         L.tileLayer('', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 6
         }).addTo(map);
 
-    L.geoJson(countries_data).addTo(map);
+    L.geoJson(countriesData, {
+        onEachFeature: function (data, layer) {
+            layer.on('click', function (e) {
+                console.log(data.properties.name);
+                }
+            )
+        }
+    }).addTo(map);
+
+
+
+
+
+
+
+    // L.geoJson(geojsonFeature, {
+    // pointToLayer: function (feature, latlng) {
+    // return L.circleMarker(latlng, geojsonMarkerOptions);
+    // }}).addTo(map);
+
+
+
+
+
+
+
+    // var layer = L.titleLayer(countries_data)
+    // .bindPopup('Hello world!')
+    // .on('click', function() { alert('Clicked on a group!'); })
+    // .addTo(map);
+
+
+    // $(layer).on('click', function () {
+    //     console.log(this);
+
+    // });
+
     </script>
 </body>
 
