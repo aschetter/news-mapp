@@ -13,95 +13,106 @@
 <body>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="world.js"></script>
-    <!-- <script src="news.js"></script> -->
     <div id="map" style="height:600px; width:750px"></div>
 
     <script type="text/javascript">
 
-        var map = L.map('map').setView([20, 10], 2);
+        var map = L.map('map', {
+            center: [20, 10],
+            zoom: 5,
+            maxBounds: [[-100, 0], [90, 90]]
+        });
 
         L.tileLayer('http://{s}.tiles.mapbox.com/v3/aschetter.j63jha01/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            minZoom: 2,
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
         }).addTo(map);
 
-    var mouseOverStyle = {
-        "fillOpacity": 0.7
-    };
+        var mouseOverStyle = {
+            "fillOpacity": 0.7
+        };
 
-    var mouseOutStyle = {
-        "fillOpacity": 0.3
-    };
+        var mouseOutStyle = {
+            "fillOpacity": 0.3
+        };
 
-    var pickedStyle = {
-        "color": "green"
-    };
+        var pickedStyle = {
+            "color": "green"
+        };
 
-    var notPickedStyle = {
-        "color": "blue"
-    };
+        var notPickedStyle = {
+            "color": "blue"
+        };
 
-    var country = '';
-    var nprUrl = '';
+        var country = '';
+        var nprUrl = '';
 
-    var geojsonTileLayer = new L.GeoJSON(countriesData, {
-        style: function(feature) {
-            fillOpacity: 0.3;
-            switch (feature.properties.picked) {
-                case true: return {color: 'green'};
-                case false: return {color: 'blue'};
-            }
-        },
-        onEachFeature: function (feature, layer) {
-            // layer.bindPopup(feature.properties.name);
-            layer.on('mouseover', function () {
-                layer.setStyle(mouseOverStyle);
-                var name = layer.feature.properties.name;
-                var array = name.split(' ');
-                country = array.join('');
-                // nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&output=JSON&apiKey=MDE1NDc4NTQ2MDE0MDY3MzIwMThiNmRhMQ001'
-                console.log('Name: ' + name);
-                console.log('array: ' + array);
-                console.log('country: ' + country);
-                // console.log('nprUrl: ' + nprUrl);
-            });
-            layer.on('mouseout', function () {
-                layer.setStyle(mouseOutStyle);
-                country = '';
-                nprUrl = '';
-                console.log(country);
-            });
-            layer.on('click', function () {
-                if (feature.properties.picked == true) {
-                    feature.properties.picked = false;
-                    layer.setStyle(notPickedStyle);
-                } else {
-                    feature.properties.picked = true;
-                    layer.setStyle(pickedStyle);
+        var geojsonTileLayer = new L.GeoJSON(countriesData, {
+            style: function(feature) {
+                fillOpacity: 0.3;
+                switch (feature.properties.picked) {
+                    case true: return {color: 'green'};
+                    case false: return {color: 'blue'};
                 }
+            },
+            onEachFeature: function (feature, layer) {
+                // layer.bindPopup(feature.properties.name);
+                layer.on('mouseover', function () {
+                    layer.setStyle(mouseOverStyle);
+                    var name = layer.feature.properties.name;
+                    var array = name.split(' ');
+                    country = array.join('');
+                    nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&output=JSON&apiKey=MDE1NDc4NTQ2MDE0MDY3MzIwMThiNmRhMQ001'
+                    console.log('Name: ' + name);
+                    console.log('array: ' + array);
+                    console.log('country: ' + country);
+                    console.log('nprUrl: ' + nprUrl);
+                });
+                layer.on('mouseout', function () {
+                    layer.setStyle(mouseOutStyle);
+                    country = '';
+                    nprUrl = '';
+                    console.log(country);
+                });
+                layer.on('click', function () {
+                    if (feature.properties.picked == true) {
+                        feature.properties.picked = false;
+                        layer.setStyle(notPickedStyle);
+                    } else {
+                        feature.properties.picked = true;
+                        layer.setStyle(pickedStyle);
+                    }
+                    console.log('Picked: ' + feature.properties.picked);
+                    $.getJSON('http://en.wikipedia.org/w/api.php?action=query&titles=Germany&format=json&callback=?')
+                        .complete(function(data) {
+                            console.log(data);
+                    }); 
+
+                        // http://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&titles=Turkey&format=json
+
+                        // http://en.wikipedia.org/w/api.php?action=query&prop=pageimages|extracts&exintro&titles=Germany&format=jsonfm
 
 
 
 
 
-                // var picked = feature.properties.picked;
-                // if (picked == true) {
-                
-                // } else {
-                
-                // }
-                // console.log('Picked: ' + picked)
-                // console.log(feature.properties);
-                // $.getJSON(nprUrl).complete(function(data) {
-                //     var link = data.responseJSON.list.story[0].link[2].$text;
-                //     var text = data.responseJSON.list.story[0].teaser.$text;
-                //     console.log(link);
-                //     console.log(text);
-                // });       
-            })
-        }
-    });
 
-    map.addLayer(geojsonTileLayer);
+
+
+
+
+                    // console.log(feature.properties);
+                    // $.getJSON(nprUrl).complete(function(data) {
+                    //     var link = data.responseJSON.list.story[0].link[2].$text;
+                    //     var text = data.responseJSON.list.story[0].teaser.$text;
+                    //     console.log(link);
+                    //     console.log(text);
+                    // });       
+                })
+            }
+        });
+
+        map.addLayer(geojsonTileLayer);
 
 
         // var news = function (nprUrl) {
