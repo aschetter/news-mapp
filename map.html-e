@@ -15,10 +15,18 @@
     <script src="world.js"></script>
 
     <div id="map" style="height:600px; width:750px"></div>
+        
+        
+
+    <div id="backgroundSpace"></div>
+    <script type="text/template" id="backgroundTemplate">
+        <h3><%= backgroundInfo.title %></h3>
+        <img src="<%= backgroundInfo.thumbnail.source %>">
+        <%= backgroundInfo.extract %>
+    </script>
 
     <div id="newsSpace"></div>
     <script type="text/template" id="newsTemplate">
-
         <%= country %>
         </br>
         </br>
@@ -30,6 +38,13 @@
     </script>
 
     <script type="text/javascript">
+        var backgroundInfo;
+
+        var renderBackgroundTemplate = function () {
+          var backgroundTemplate = _.template($("#backgroundTemplate").html());
+          var resultingHtml = backgroundTemplate({backgroundInfo: backgroundInfo});
+          $("#backgroundSpace").html(resultingHtml);
+        };
 
         var stories;
 
@@ -69,7 +84,6 @@
         var name = '';
         var nprUrl = '';
         var wikiUrl = '';
-        var info;
 
         var geojsonTileLayer = new L.GeoJSON(countriesData, {
             style: function(feature) {
@@ -88,7 +102,7 @@
                     country = array.join('');
                     var apiKey = 'MDE1NDc4NTQ2MDE0MDY3MzIwMThiNmRhMQ001'
                     nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&output=JSON&apiKey=' + apiKey
-                    wikiUrl = 'http://en.wikipedia.org/w/api.php?action=query&prop=pageimages|extracts&exintro&titles=' + country + '&format=json&callback=?'
+                    wikiUrl = 'http://en.wikipedia.org/w/api.php?action=query&prop=pageimages|extracts&exintro&titles=' + name + '&format=json&callback=?'
                     console.log('Name: ' + name);
                     console.log('array: ' + array);
                     console.log('country: ' + country);
@@ -100,7 +114,7 @@
                     country = '';
                     nprUrl = '';
                     wikiUrl = '';
-                    // info = '';
+                    // backgroundInfo = '';
                 });
                 layer.on('click', function () {
                     if (feature.properties.picked == true) {
@@ -122,15 +136,15 @@
                         var pages = data.responseJSON.query.pages
                         for (var pageId in pages) {
                             if (pages.hasOwnProperty(pageId)) {
-                                // console.log(pages[pageId].title);
-                                info = pages[pageId]
+                                console.log(pages[pageId].title);
+                                backgroundInfo = pages[pageId];
+                                renderBackgroundTemplate();
                             }
                         }
                     }); 
                 })
             }
         });
-
 
 
 
