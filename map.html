@@ -13,9 +13,57 @@
 <body>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="world.js"></script>
+
     <div id="map" style="height:600px; width:750px"></div>
 
+    <button id="button">click me</button>
+
+
+
+
+
+
+    <div id="newsSpace"></div>
+    <script type="text/template" id="newsTemplate">
+      <%= stories %>
+    </script>
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+
+
+// LOAD QUIZZES LIST AND RENDER ITS TEMPLATE
+
+
+    var stories;
+
+// QUIZ LIST TEMPLATE
+
+var renderNewsTemplate = function () {
+  var newsTemplate = _.template($("#newsTemplate").html());
+  var resultingHtml = newsTemplate({stories: stories});
+  $("#newsSpace").html(resultingHtml);
+};
+
+
+</script>
+
+
     <script type="text/javascript">
+
+    // $('#button').on('click', function() {
+    //     renderNewsTemplate();
+    //     console.log('hi');
+        
+    // });
+
 
         var map = L.map('map', {
             center: [20, 10],
@@ -83,37 +131,29 @@
                         layer.setStyle(pickedStyle);
                     }
                     console.log('Picked: ' + feature.properties.picked);
-                    $.getJSON('http://en.wikipedia.org/w/api.php?action=query&titles=Germany&format=json&callback=?')
-                        .complete(function(data) {
-                            console.log(data);
-                    }); 
+                    // $.getJSON('http://en.wikipedia.org/w/api.php?action=query&titles=Germany&format=json&callback=?')
+                    //     .complete(function(data) {
+                    //         console.log(data);
+                    // }); 
 
                         // http://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&titles=Turkey&format=json
 
                         // http://en.wikipedia.org/w/api.php?action=query&prop=pageimages|extracts&exintro&titles=Germany&format=jsonfm
 
-
-
-
-
-
-
-
-
-
                     // console.log(feature.properties);
-                    // $.getJSON(nprUrl).complete(function(data) {
-                    //     var link = data.responseJSON.list.story[0].link[2].$text;
-                    //     var text = data.responseJSON.list.story[0].teaser.$text;
-                    //     console.log(link);
-                    //     console.log(text);
-                    // });       
+                    $.getJSON(nprUrl).complete(function(data) {
+                        stories = data.responseJSON.list.story;
+                        console.log(stories);
+                        renderNewsTemplate();
+                    });       
                 })
             }
         });
 
         map.addLayer(geojsonTileLayer);
 
+        // [0].link[2].$text
+        // [0].teaser.$text
 
         // var news = function (nprUrl) {
         // };
