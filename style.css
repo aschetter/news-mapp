@@ -1,0 +1,12 @@
+#map {
+    width: 32rem;
+    height: 30rem;
+    text-align: center;
+}
+
+ *  {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid red;
+}
