@@ -95,14 +95,6 @@ var geojsonTileLayer = new L.GeoJSON(countriesData, {
             // }
             console.log('Picked: ' + feature.properties.picked);
 
-// NPR AJAX CALL
-
-            $.getJSON(nprUrl).complete(function(data) {
-                stories = data.responseJSON.list.story;
-                console.log(stories);
-                renderNewsTemplate();
-            });
-
 // WIKIPEDIA AJAX CALL
 
             $.getJSON(wikiUrl).complete(function(data) {
@@ -111,10 +103,19 @@ var geojsonTileLayer = new L.GeoJSON(countriesData, {
                     if (pages.hasOwnProperty(pageId)) {
                         console.log(pages[pageId].title);
                         backgroundInfo = pages[pageId];
-                        renderBackgroundTemplate();
                     }
                 }
             });
+            
+// NPR AJAX CALL
+
+            $.getJSON(nprUrl).complete(function(data) {
+                stories = data.responseJSON.list.story;
+                console.log(stories);
+                renderNewsTemplate();
+                renderBackgroundTemplate();
+            });
+
         })
     }
 });
