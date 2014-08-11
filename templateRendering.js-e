@@ -13,3 +13,11 @@ var renderNewsTemplate = function (country, stories) {
   var resultingHtml = newsTemplate({country: country, stories: stories});
   $("#newsSpace").html(resultingHtml);
 };
+
+// CITY TEMPLATE RENDERING
+
+var renderCityTemplate = function (city, country) {
+  var cityTemplate = _.template($("#cityTemplate").html());
+  var resultingHtml = cityTemplate({city: city, country: country});
+  $("#city").html(resultingHtml);
+};

@@ -20,23 +20,27 @@ var pickedStyle = {
     "color": 'blue'
 };
 
-var weather;
 
 function getStories (country, nprUrl, wikiUrl, lat, lng) {
+    
+// WEATHER/ CITY API CALL
+
+    var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&mode=json&units=imperial'
+
+    $.getJSON(weatherUrl).complete(function(data) {
+        var city = data.responseJSON.name;
+        renderCityTemplate(city, country);
+    });
     
 // NPR AJAX CALL
 
     var stories;
-    var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&mode=json&units=imperial'
 
     $.getJSON(nprUrl).complete(function(data) {
         stories = data.responseJSON.list.story;
     }).complete(function () {
 
 // FINISH NPR CALL AND MAKE WIKIPEDIA AJAX CALL
-    $.getJSON(weatherUrl).complete(function(data) {
-        weather = data;
-    })
 
     $.getJSON(wikiUrl).complete(function(data) {
         var pages = data.responseJSON.query.pages
@@ -57,14 +61,12 @@ function getStories (country, nprUrl, wikiUrl, lat, lng) {
     });
 }
 
+// weather.responseJSON.main.temp
+// weather.responseJSON.weather[0].main
 
-weather.responseJSON.main.temp
-weather.responseJSON.name
-weather.responseJSON.weather[0].main
-
-var coord;
 
 function onEachFeature (feature, layer) {
+    var coord;
     var country = '';
     var nprUrl = '';
     var wikiUrl = '';

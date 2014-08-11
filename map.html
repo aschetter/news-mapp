@@ -35,7 +35,7 @@
 
     <div class="container-fluid">
         <div class="row" id="top-bar">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">A world of news</div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="city"></div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="date"></div>
         </div>
     </div>
@@ -56,6 +56,12 @@
             <div class="col-sm-12 col-md-12 col-lg-12" id="backgroundSpace"></div>
         </div>
     </div>
+
+    <!-- CITY TEMPLATE -->
+
+    <script type="text/template" id="cityTemplate">
+        <%= city %>, <%= country %>
+    </script>
 
     <!-- COUNTRY BACKGROUND TEMPLATE -->
 
