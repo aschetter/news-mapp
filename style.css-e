@@ -9,12 +9,12 @@
     border-top: 1px solid black;
 }
 
-*  {
+/**  {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     border: 1px solid red;
-}
+}*/
 
 body {
     font-family: helvetica;
@@ -22,8 +22,8 @@ body {
 }
 
 #title {
-    height: 7rem;
-    padding-top: 2.5rem;
+    height: 8rem;
+    padding-top: 1.75rem;
     font-size: 3rem;
 }
 
@@ -38,12 +38,13 @@ body {
 }
 
 #icon1 {
+    padding-top: .5rem;
     text-align: right;
-    height: 4rem;
+    height: 6rem;
 }
 
 #newsSpace {
-    font-size: 1.5rem;
     padding-bottom: 0;
     margin-bottom: 0;
+    font-size: 1.25rem;
 }

@@ -83,10 +83,10 @@
 
     <script type="text/template" id="newsTemplate">
         <h2><u><%= country %></u></h2>
-          <h4>Recent News</h4>
+          <h3>Recent News</h3>
             <ul>
             <% _.each(stories, function (story) { %>
-                <li><a href="<%= story.link[1].$text %>"><%= story.title.$text %></</a></li>
+                <li><a href="<%= story.link[2].$text %>"><%= story.title.$text %></</a></li>
             <% }); %>
             </ul>
 

@@ -55,7 +55,6 @@ function onEachFeature (feature, layer) {
     });
 }
 
-
 var geojsonTileLayer = new L.GeoJSON(countriesData, {
     style: style,
     onEachFeature: onEachFeature

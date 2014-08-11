@@ -67,8 +67,7 @@ var renderWeatherTemplate = function (condition) {
     else {
       output = "CLEAR_DAY";
     }
-    console.log(condition)
-    console.log(output);
+
     var display = "Skycons." + output;
     var skycons = new Skycons({"color": "black"});
 

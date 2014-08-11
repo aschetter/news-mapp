@@ -1,5 +1,3 @@
-var condition;
-
 function getStories (country, nprUrl, wikiUrl, lat, lng) {
     
 // WEATHER/CITY AJAX CALL
@@ -10,7 +8,7 @@ function getStories (country, nprUrl, wikiUrl, lat, lng) {
         var city = data.responseJSON.name;
         var temp = data.responseJSON.main.temp;
         temp = parseInt(temp);
-        condition = data.responseJSON.weather[0].main.toLowerCase();
+        var condition = data.responseJSON.weather[0].main.toLowerCase();
         
         renderCityTemplate(city, country);
         renderTempTemplate(temp);
