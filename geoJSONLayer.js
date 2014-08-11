@@ -20,16 +20,23 @@ var pickedStyle = {
     "color": 'blue'
 };
 
-function getStories (country, nprUrl, wikiUrl) {
+var weather;
+
+function getStories (country, nprUrl, wikiUrl, lat, lng) {
     
 // NPR AJAX CALL
 
     var stories;
+    var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&mode=json&units=imperial'
+
     $.getJSON(nprUrl).complete(function(data) {
         stories = data.responseJSON.list.story;
     }).complete(function () {
 
 // FINISH NPR CALL AND MAKE WIKIPEDIA AJAX CALL
+    $.getJSON(weatherUrl).complete(function(data) {
+        weather = data;
+    })
 
     $.getJSON(wikiUrl).complete(function(data) {
         var pages = data.responseJSON.query.pages
@@ -49,6 +56,13 @@ function getStories (country, nprUrl, wikiUrl) {
         });
     });
 }
+
+
+weather.responseJSON.main.temp
+weather.responseJSON.name
+weather.responseJSON.weather[0].main
+
+var coord;
 
 function onEachFeature (feature, layer) {
     var country = '';
@@ -73,12 +87,17 @@ function onEachFeature (feature, layer) {
 
 // LAYER CLICK EVENT HANDLER
 
-    layer.on('click', function () {
-        feature.properties.picked = true;
+    layer.on('click', function (e) {
         layer.setStyle(pickedStyle);
-        getStories(country, nprUrl, wikiUrl);
+        feature.properties.picked = true;
+
+        coord = e.latlng;
+        var lat = (coord.lat).toFixed(2);
+        var lng = (coord.lng).toFixed(2);
+        getStories(country, nprUrl, wikiUrl, lat, lng);
     });
 }
+
 
 var geojsonTileLayer = new L.GeoJSON(countriesData, {
     style: style,
