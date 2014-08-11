@@ -2,9 +2,10 @@
 
 function style (feature, layer) {
     fillOpacity: 0.3;
+    weight: 2;
     switch (feature.properties.picked) {
-        case true: return {color: 'blue'};
-        case false: return {color: '#fcac40'};
+        case true: return {color: 'blue', fillOpacity: 0.2};
+        case false: return {color: 'clear', fillOpacity: 0.2};
     }
 };
 
@@ -13,7 +14,7 @@ var mouseOverStyle = {
 };
 
 var mouseOutStyle = {
-    'fillOpacity': 0.3
+    'fillOpacity': 0.2
 };
 
 var pickedStyle = {
