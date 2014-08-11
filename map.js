@@ -12,7 +12,7 @@ var renderBackgroundTemplate = function () {
 
 var stories;
 
-var renderNewsTemplate = function () {
+var renderNewsTemplate = function (country) {
   var newsTemplate = _.template($("#newsTemplate").html());
   var resultingHtml = newsTemplate({country: country, stories: stories});
   $("#newsSpace").html(resultingHtml);
@@ -48,9 +48,6 @@ var pickedStyle = {
 //     "color": "blue"
 // };
 
-var country = '';
-var nprUrl = '';
-var wikiUrl = '';
 
 var geojsonTileLayer = new L.GeoJSON(countriesData, {
 
@@ -67,6 +64,9 @@ var geojsonTileLayer = new L.GeoJSON(countriesData, {
 // GeoJSON EVENT HANDLERS
 
     onEachFeature: function (feature, layer) {
+        var country = '';
+        var nprUrl = '';
+        var wikiUrl = '';
         // layer.bindPopup(feature.properties.name);
         layer.on('mouseover', function () {
             layer.setStyle(mouseOverStyle);
@@ -78,9 +78,9 @@ var geojsonTileLayer = new L.GeoJSON(countriesData, {
             // 'http://en.wikipedia.org/w/api.php?action=parse&page=' + country + '&prop=text|images&section=0&format=json&callback=?'
             // 'http://en.wikipedia.org/w/api.php?action=query&prop=pageimages|extracts&exintro&titles=' + country + '&format=json&callback=?';
 
-            console.log('country: ' + country);
-            console.log('nprUrl: ' + nprUrl);
-            console.log('wikiUrl: ' + wikiUrl);
+            // console.log('country: ' + country);
+            // console.log('nprUrl: ' + nprUrl);
+            // console.log('wikiUrl: ' + wikiUrl);
         });
         layer.on('mouseout', function () {
             layer.setStyle(mouseOutStyle);
@@ -112,7 +112,7 @@ var geojsonTileLayer = new L.GeoJSON(countriesData, {
             $.getJSON(nprUrl).complete(function(data) {
                 stories = data.responseJSON.list.story;
                 console.log(stories);
-                renderNewsTemplate();
+                renderNewsTemplate(country);
                 renderBackgroundTemplate();
             });
 
