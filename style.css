@@ -1,7 +1,12 @@
 #map {
     margin-top: 1rem;
+    margin-bottom: 1rem;
     height: 32rem;
     text-align: center;
+}
+
+.section-two {
+    border-top: 1px solid black;
 }
 
 /**  {
@@ -11,11 +16,15 @@
     border: 1px solid red;
 }*/
 
+body {
+    font-family: helvetica;
+    
+}
+
 #title {
     height: 7rem;
-    font-size: 10rem;
+    font-size: 12rem;
     text-align: center;
-    font-family: helvetica;
 }
 
 #top-bar {

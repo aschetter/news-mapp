@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MAP</title>
+    <title>News mApp</title>
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -19,6 +19,8 @@
 </head>
 
 <body>
+
+    <!-- TITLE HEADER -->
 
     <div class="container-fluid">
         <div class="row" id="title">
@@ -35,28 +37,37 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <!-- MAP AND NEWS CONTAINER -->
+
+    <div class="container-fluid section-one">
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6" id="map"></div>
             <div class="col-sm-12 col-md-6 col-lg-6" id="newsSpace"></div>
         </div>
     </div>
 
-    <div class="container-fluid">
+    <!-- BACKGROUND INFORMATION CONTAINER -->
+
+    <div class="container-fluid section-two">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12" id="backgroundSpace"></div>
         </div>
     </div>
 
+    <!-- COUNTRY BACKGROUND TEMPLATE -->
+
     <script type="text/template" id="backgroundTemplate">
         <h4>Background Information</h4>
         <%= backgroundInfo.extract %>
     </script>
+
+    <!-- NEWS TEMPLATE -->
+
     <script type="text/template" id="newsTemplate">
         <h2><%= country %></h2>
         <h4>Recent News</h4>
         <% _.each(stories, function (story) { %>
-            <a href="<%= story.link[2].$text %>"><%= story.title.$text %></a></li>
+            <a href="<%= story.link[1].$text %>"><%= story.title.$text %></a></li>
             </br>
             </br>
         <% }); %>
@@ -68,10 +79,13 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <!-- LEAFLET JS -->
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <!-- COUNTRY DATA -->
+    <!-- GeoJSON COUNTRY DATA -->
     <script src="world.js"></script>
+    <!-- DATE JS -->
+    <script src="date.js"></script>
     <!-- MAP LAYER DATA -->
     <script src="map.js"></script>
+    <!-- BOOTSTAP JS -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 
