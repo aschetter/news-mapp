@@ -23,17 +23,20 @@
 
     <!-- TITLE HEADER -->
 
-    <div class="container-fluid">
-        <div class="row" id="title">
-            <div>
-                <h1>News mApp</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="title">news mApp</div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 pull-right">
+                    <canvas class="pull-right" id="icon1"></canvas>
+                    <div class="pull-right" id="temp"></div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- TOP BAR -->
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row" id="top-bar">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="city"></div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="date"></div>
@@ -42,7 +45,7 @@
 
     <!-- MAP AND NEWS CONTAINER -->
 
-    <div class="container-fluid section-one">
+    <div class="container section-one">
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6" id="map"></div>
             <div class="col-sm-12 col-md-6 col-lg-6" id="newsSpace"></div>
@@ -51,7 +54,7 @@
 
     <!-- BACKGROUND INFORMATION CONTAINER -->
 
-    <div class="container-fluid section-two">
+    <div class="container section-two">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12" id="backgroundSpace"></div>
         </div>
@@ -61,6 +64,12 @@
 
     <script type="text/template" id="cityTemplate">
         <%= city %>, <%= country %>
+    </script>
+
+    <!-- WEATHER TEMPLATE -->
+
+    <script type="text/template" id="tempTemplate">
+        <%= temp%>°F
     </script>
 
     <!-- COUNTRY BACKGROUND TEMPLATE -->
@@ -73,22 +82,22 @@
     <!-- NEWS TEMPLATE -->
 
     <script type="text/template" id="newsTemplate">
-        <h1><u><%= country %></u></h1>
-        <ul class="list-unstyled">
-          <li><h3>Recent News</h3>
+        <h2><u><%= country %></u></h2>
+          <h4>Recent News</h4>
             <ul>
-                <% _.each(stories, function (story) { %>
-                    <li><a href="<%= story.link[1].$text %>"><%= story.title.$text %></</a></li>
-                <% }); %>
+            <% _.each(stories, function (story) { %>
+                <li><a href="<%= story.link[1].$text %>"><%= story.title.$text %></</a></li>
+            <% }); %>
             </ul>
-          </li>
-        </ul>
+
     </script>
 
     <!-- JQUERY -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- UNDERSCORE JS -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+    <!-- SKYCON JS -->
+    <script src="http://learn.themakersquare.com/materials/week-7/weather-icons.js"></script>
     <!-- LEAFLET JS -->
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
@@ -100,6 +109,8 @@
     <script src="map.js"></script>
     <!-- GeoJSON LAYER DATA -->
     <script src="geoJSONLayer.js"></script>
+    <!-- API CALLS -->
+    <script src="apiCalls.js"></script>
     <!-- TEMPLATE RENDERING -->
     <script src="templateRendering.js"></script>
 

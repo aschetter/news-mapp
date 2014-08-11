@@ -20,51 +20,6 @@ var pickedStyle = {
     "color": 'blue'
 };
 
-
-function getStories (country, nprUrl, wikiUrl, lat, lng) {
-    
-// WEATHER/ CITY API CALL
-
-    var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&mode=json&units=imperial'
-
-    $.getJSON(weatherUrl).complete(function(data) {
-        var city = data.responseJSON.name;
-        renderCityTemplate(city, country);
-    });
-    
-// NPR AJAX CALL
-
-    var stories;
-
-    $.getJSON(nprUrl).complete(function(data) {
-        stories = data.responseJSON.list.story;
-    }).complete(function () {
-
-// FINISH NPR CALL AND MAKE WIKIPEDIA AJAX CALL
-
-    $.getJSON(wikiUrl).complete(function(data) {
-        var pages = data.responseJSON.query.pages
-        for (var pageId in pages) {
-            if (pages.hasOwnProperty(pageId)) {
-                var backgroundInfo = pages[pageId];
-
-// RENDER BACKGROUND TEMPLATE
-
-                renderBackgroundTemplate(backgroundInfo);
-            }
-        }
-
-// RENDER NEWS TEMPLATE
-
-        renderNewsTemplate(country, stories);
-        });
-    });
-}
-
-// weather.responseJSON.main.temp
-// weather.responseJSON.weather[0].main
-
-
 function onEachFeature (feature, layer) {
     var coord;
     var country = '';
