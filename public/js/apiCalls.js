@@ -6,7 +6,7 @@ function getStories (country, lat, lng) {
 
     $.getJSON(nprUrl).complete(function(data) {
         var stories = data.responseJSON;
-        renderNewsTemplate(country, stories);
+        renderNewsTemplate(stories);
     });
 
 // BACKGROUND INFO AJAX CALL

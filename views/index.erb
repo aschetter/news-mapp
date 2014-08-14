@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>News mApp</title>
+
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <!-- BOOTSTRAP THEME CSS -->
@@ -26,11 +27,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="title">news mApp</div>
-                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 pull-right">
-                    <canvas class="pull-right" id="icon1"></canvas>
-                    <div class="pull-right" id="temp"></div>
-                </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="title">news mApp</div>
             </div>
         </div>
     </div>
@@ -39,23 +36,48 @@
 
     <div class="container">
         <div class="row" id="top-bar">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="city">Click a country</div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="date"></div>
+            <div class="col-xs-5 col-sm-4 col-md-6 col-lg-6">Click a country</div>
+            <div class="col-xs-7 col-sm-8 col-md-6 col-lg-6 pull-right" id="date"></div>
         </div>
     </div>
 
     <!-- MAP AND NEWS CONTAINER -->
 
-    <div class="container section-one">
+    <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6" id="map"></div>
-            <div class="col-sm-12 col-md-6 col-lg-6" id="newsSpace"></div>
+
+    <!-- MAP -->
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="map"></div>
+
+    <!-- CITY/ COUNTRY/ WEATHER/ TEMP ROW -->
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="row">
+
+    <!-- CITY -->
+
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="city"></div>
+
+    <!-- WEATHER -->
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 pull-right">
+                        <canvas class="pull-right" id="icon1"></canvas>
+                        <div class="pull-right" id="temp"></div>
+                    </div>
+                </div>
+
+    <!-- NEWS ROW -->
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="newsSpace"></div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- BACKGROUND INFORMATION CONTAINER -->
 
-    <div class="container section-two">
+    <div class="container" id="background">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12" id="backgroundSpace"></div>
         </div>
@@ -64,7 +86,8 @@
     <!-- CITY TEMPLATE -->
 
     <script type="text/template" id="cityTemplate">
-        {{ city }}, {{ country }}
+        <h4><u>{{ country }}</u></h4>
+        <h5>{{ city }}</h5>
     </script>
 
     <!-- WEATHER TEMPLATE -->
@@ -76,15 +99,14 @@
     <!-- COUNTRY BACKGROUND TEMPLATE -->
 
     <script type="text/template" id="backgroundTemplate">
-        <h3>Background Information</h3>
+        <h4><u>Background Information</u></h4>
         {{ backgroundInfo.extract }}
     </script>
 
     <!-- NEWS TEMPLATE -->
 
     <script type="text/template" id="newsTemplate">
-        <h2><u>{{ country }}</u></h2>
-        <h3>Recent News</h3>
+        <h5>Country News</h5>
         <ul>
             <li><a href="{{ stories[0].link }}">{{ stories[0].title }}</a></li>
             <li><a href="{{ stories[1].link }}">{{ stories[1].title }}</a></li>
@@ -99,9 +121,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- UNDERSCORE JS -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-    <script type="text/javascript">
-        _.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };
-    </script>
+    <script type="text/javascript">_.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };</script>
     <!-- SKYCON JS -->
     <script src="http://learn.themakersquare.com/materials/week-7/weather-icons.js"></script>
     <!-- LEAFLET JS -->

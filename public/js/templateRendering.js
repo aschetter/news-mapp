@@ -8,9 +8,9 @@ var renderBackgroundTemplate = function (backgroundInfo) {
 
 // NEWS STORIES TEMPLATE RENDERING
 
-var renderNewsTemplate = function (country, stories) {
+var renderNewsTemplate = function (stories) {
     var newsTemplate = _.template($("#newsTemplate").html());
-    var resultingHtml = newsTemplate({country: country, stories: stories});
+    var resultingHtml = newsTemplate({stories: stories});
     $("#newsSpace").html(resultingHtml);
 };
 
