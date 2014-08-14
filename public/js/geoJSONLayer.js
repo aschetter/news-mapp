@@ -24,17 +24,12 @@ var pickedStyle = {
 function onEachFeature (feature, layer) {
     var coord;
     var country = '';
-    var nprUrl = '';
-    var wikiUrl = '';
 
 // LAYER MOUSEOVER EVENT HANDLER
 
     layer.on('mouseover', function () {
         layer.setStyle(mouseOverStyle);
         country = layer.feature.properties.name;
-        var apiKey = 'PASSWORD';
-        nprUrl = 'http://api.npr.org/query?searchTerm=' + country + '&numResults=5&output=JSON&apiKey=' + apiKey;
-        wikiUrl = 'http://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&titles=' + country + '&format=json&callback=?';
     });
 
 // LAYER MOUSEOUT EVENT HANDLER
@@ -52,7 +47,7 @@ function onEachFeature (feature, layer) {
         coord = e.latlng;
         var lat = (coord.lat).toFixed(2);
         var lng = (coord.lng).toFixed(2);
-        getStories(country, nprUrl, wikiUrl, lat, lng);
+        getStories(country, lat, lng);
     });
 }
 
