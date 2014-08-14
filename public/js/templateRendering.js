@@ -71,5 +71,5 @@ var renderWeatherTemplate = function (condition) {
     var display = "Skycons." + output;
     var skycons = new Skycons({"color": "black"});
 
-    skycons.add("icon1", eval(display));
+    skycons.add("weather", eval(display));
 };

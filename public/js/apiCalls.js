@@ -14,7 +14,7 @@ function getStories (country, lat, lng) {
     var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&titles=' + country + '&format=json&callback=?';
 
     $.getJSON(wikiUrl).complete(function(data) {
-        var pages = data.responseJSON.query.pages
+        var pages = data.responseJSON.query.pages;
         for (var pageId in pages) {
             if (pages.hasOwnProperty(pageId)) {
                 var backgroundInfo = pages[pageId];
@@ -36,6 +36,7 @@ function getStories (country, lat, lng) {
         renderCityTemplate(city, country);
         renderTempTemplate(temp);
         renderWeatherTemplate(condition);
+        $('#weather').css('visibility','visible');
     });
     
 }

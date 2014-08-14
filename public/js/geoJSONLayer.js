@@ -21,6 +21,9 @@ var pickedStyle = {
     "color": 'blue'
 };
 
+var smallLoaderHTML = "<img src='./images/ajax_loader.gif'>";
+var bigLoaderHTML = "<img src='./images/ajax_loader1.gif'>";
+
 function onEachFeature (feature, layer) {
     var coord;
     var country = '';
@@ -41,6 +44,17 @@ function onEachFeature (feature, layer) {
 // LAYER CLICK EVENT HANDLER
 
     layer.on('click', function (e) {
+        $('#city').empty();
+        $('#weather').css('visibility','hidden');
+        $('#temp').empty();
+        $('#newsSpace').empty();
+        $('#backgroundSpace').empty();
+
+        $('#city').append(smallLoaderHTML);
+        $('#temp').append(smallLoaderHTML);
+        $('#newsSpace').append(bigLoaderHTML);
+        $('#backgroundSpace').append(bigLoaderHTML);
+
         layer.setStyle(pickedStyle);
         feature.properties.picked = true;
 
