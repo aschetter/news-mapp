@@ -1,33 +1,17 @@
-// BACKGROUND INFO TEMPLATE RENDERING
+// LOCATION TEMPLATE RENDERING
 
-var renderBackgroundTemplate = function (backgroundInfo) {
-    var backgroundTemplate = _.template($("#backgroundTemplate").html());
-    var resultingHtml = backgroundTemplate({backgroundInfo: backgroundInfo});
-    $("#backgroundSpace").html(resultingHtml);
-};
-
-// NEWS STORIES TEMPLATE RENDERING
-
-var renderNewsTemplate = function (stories) {
-    var newsTemplate = _.template($("#newsTemplate").html());
-    var resultingHtml = newsTemplate({stories: stories});
-    $("#newsSpace").html(resultingHtml);
+var renderLocationTemplate = function (city, country) {
+    var locationTemplate = _.template($("#locationTemplate").html());
+    var resultingHtml = locationTemplate({city: city, country: country});
+    $("#location").html(resultingHtml);
 };
 
 // CITY TEMPLATE RENDERING
 
-var renderCityTemplate = function (city, country) {
+var renderCityTemplate = function (temp, condition) {
     var cityTemplate = _.template($("#cityTemplate").html());
-    var resultingHtml = cityTemplate({city: city, country: country});
+    var resultingHtml = cityTemplate({temp: temp, condition: condition});
     $("#city").html(resultingHtml);
-};
-
-// TEMP TEMPLATE RENDERING
-
-var renderTempTemplate = function (temp) {
-    var weatherTemplate = _.template($("#tempTemplate").html());
-    var resultingHtml = weatherTemplate({temp: temp});
-    $("#temp").html(resultingHtml);
 };
 
 // WEATHER TEMPLATE RENDERING
@@ -72,4 +56,20 @@ var renderWeatherTemplate = function (condition) {
     var skycons = new Skycons({"color": "black"});
 
     skycons.add("weather", eval(display));
+};
+
+// NEWS STORIES TEMPLATE RENDERING
+
+var renderNewsTemplate = function (stories) {
+    var newsTemplate = _.template($("#newsTemplate").html());
+    var resultingHtml = newsTemplate({stories: stories});
+    $("#newsSpace").html(resultingHtml);
+};
+
+// BACKGROUND INFO TEMPLATE RENDERING
+
+var renderBackgroundTemplate = function (backgroundInfo) {
+    var backgroundTemplate = _.template($("#backgroundTemplate").html());
+    var resultingHtml = backgroundTemplate({backgroundInfo: backgroundInfo});
+    $("#backgroundSpace").html(resultingHtml);
 };

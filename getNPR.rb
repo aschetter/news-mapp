@@ -13,7 +13,6 @@ def getNPR(country)
 
   client = NPR::API::Client.new(apiKey: NPR.config.apiKey)
   response = client.query(searchTerm: country, numResults: "5")
-  # binding.pry
   @stories = []
 
   response.list.stories.each do |story|

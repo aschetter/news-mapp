@@ -1,4 +1,4 @@
-function getStories (country, lat, lng) {
+function apiCalls (country, lat, lng) {
     
 // NPR AJAX CALL
 
@@ -7,7 +7,7 @@ function getStories (country, lat, lng) {
     $.getJSON(nprUrl).complete(function(data) {
         var stories = data.responseJSON;
         renderNewsTemplate(stories);
-        $('#newsSpace').css('display','block');
+        $('#newsSpace').show();
     });
 
 // BACKGROUND INFO AJAX CALL
@@ -20,12 +20,12 @@ function getStories (country, lat, lng) {
             if (pages.hasOwnProperty(pageId)) {
                 var backgroundInfo = pages[pageId];
                 renderBackgroundTemplate(backgroundInfo);
-                $('#background').css('display','block');
+                $('#background').show();
             }
         }
     });
     
-// WEATHER/CITY AJAX CALL
+// WEATHER/ CITY AJAX CALL
 
     var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&mode=json&units=imperial'
 
@@ -34,15 +34,17 @@ function getStories (country, lat, lng) {
         var temp = data.responseJSON.main.temp;
         temp = parseInt(temp);
         var condition = data.responseJSON.weather[0].main.toLowerCase();
-        
-        renderCityTemplate(city, country);
-        $('#city').css('display','block');
 
-        renderTempTemplate(temp);
-        $('#temp').css('display','block');
+        country = country.toUpperCase();
+
+        renderLocationTemplate(city, country);
+        $('#location').show();
+        
+        renderCityTemplate(temp, condition);
+        $('#city').show();
 
         renderWeatherTemplate(condition);
-        $('#weather').css('visibility','visible').css('display','block');
+        $('#weather').css('visibility','visible').show();
     });
     
 }
