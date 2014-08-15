@@ -1,13 +1,11 @@
 // SHOW ALL DIVS AFTER FIRST MAP CLICK
 
 function showDivs () {
-
-    $('#newsSpace').css('display','block');
-    $('#background').css('display','block');
-    $('#city').css('display','block');
-    $('#temp').css('display','block');
-    $('#weather').css('visibility','visible').css('display','block');
-
+    $('#newsSpace').show();
+    $('#background').show();
+    $('#city').show();
+    $('#temp').show();
+    $('#weather').css('visibility','visible').show();
 };
 
 // AJAX LOADER
@@ -15,19 +13,11 @@ function showDivs () {
 var loaderHTML = "<img src='./images/ajax_loader.gif'>";
 
 function showLoader () {
-    $('#city').empty();
-    $('#city').append(loaderHTML);
-
-    $('#weather').css('visibility','hidden');
-
-    $('#temp').empty();
-    $('#temp').append(loaderHTML);
-
-    $('#newsSpace').empty();
-    $('#newsSpace').append(loaderHTML);
-
-    $('#backgroundSpace').empty();
-    $('#backgroundSpace').append(loaderHTML);
+    $('#city').html(loaderHTML);
+    $('#weather').hide();
+    $('#temp').html(loaderHTML);
+    $('#newsSpace').html(loaderHTML);
+    $('#backgroundSpace').html(loaderHTML);
 };
 
 // GeoJSON LAYER STYLE
@@ -53,6 +43,8 @@ var pickedStyle = {
     "color": 'blue'
 };
 
+// GeoJSON ONEACH FUNCTION
+
 function onEachFeature (feature, layer) {
     var coord;
     var country = '';
@@ -73,24 +65,29 @@ function onEachFeature (feature, layer) {
 // LAYER CLICK EVENT HANDLER
 
     layer.on('click', function (e) {
+        $('#map').css('height','30rem');
+
         showDivs();
         showLoader();
+
         layer.setStyle(pickedStyle);
         feature.properties.picked = true;
-        $('#map').css('height','30rem');
 
         coord = e.latlng;
         var lat = (coord.lat).toFixed(2);
         var lng = (coord.lng).toFixed(2);
+
+        map.fitBounds(map.getBounds());
+        map.getZoom();
+        map.invalidateSize(false);
+        // map.setView([lat, lng]);
         getStories(country, lat, lng);
     });
 }
+
+// CREATE GeoJSON TILE LAYER
 
 var geojsonTileLayer = new L.GeoJSON(countriesData, {
     style: style,
     onEachFeature: onEachFeature
 });
-
-map.addLayer(geojsonTileLayer);
-
-map.setMaxBounds(geojsonTileLayer.getBounds());

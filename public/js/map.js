@@ -1,8 +1,10 @@
 // MAP TILE LAYER
 
 var map = L.map('map', {
-    center: [0, 0],
+    center: [10, 0],
     zoom: 2,
+    worldCopyJump: true,
+    layers: geojsonTileLayer,
 });
 
 L.tileLayer('http://{s}.tiles.mapbox.com/v3/aschetter.j63jha01/{z}/{x}/{y}.png', {
