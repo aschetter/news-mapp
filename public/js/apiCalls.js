@@ -7,6 +7,7 @@ function getStories (country, lat, lng) {
     $.getJSON(nprUrl).complete(function(data) {
         var stories = data.responseJSON;
         renderNewsTemplate(stories);
+        $('#newsSpace').css('display','block');
     });
 
 // BACKGROUND INFO AJAX CALL
@@ -19,6 +20,7 @@ function getStories (country, lat, lng) {
             if (pages.hasOwnProperty(pageId)) {
                 var backgroundInfo = pages[pageId];
                 renderBackgroundTemplate(backgroundInfo);
+                $('#background').css('display','block');
             }
         }
     });
@@ -34,9 +36,13 @@ function getStories (country, lat, lng) {
         var condition = data.responseJSON.weather[0].main.toLowerCase();
         
         renderCityTemplate(city, country);
+        $('#city').css('display','block');
+
         renderTempTemplate(temp);
+        $('#temp').css('display','block');
+
         renderWeatherTemplate(condition);
-        $('#weather').css('visibility','visible');
+        $('#weather').css('visibility','visible').css('display','block');
     });
     
 }

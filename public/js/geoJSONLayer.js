@@ -1,3 +1,35 @@
+// SHOW ALL DIVS AFTER FIRST MAP CLICK
+
+function showDivs () {
+
+    $('#newsSpace').css('display','block');
+    $('#background').css('display','block');
+    $('#city').css('display','block');
+    $('#temp').css('display','block');
+    $('#weather').css('visibility','visible').css('display','block');
+
+};
+
+// AJAX LOADER
+
+var loaderHTML = "<img src='./images/ajax_loader.gif'>";
+
+function showLoader () {
+    $('#city').empty();
+    $('#city').append(loaderHTML);
+
+    $('#weather').css('visibility','hidden');
+
+    $('#temp').empty();
+    $('#temp').append(loaderHTML);
+
+    $('#newsSpace').empty();
+    $('#newsSpace').append(loaderHTML);
+
+    $('#backgroundSpace').empty();
+    $('#backgroundSpace').append(loaderHTML);
+};
+
 // GeoJSON LAYER STYLE
 
 function style (feature, layer) {
@@ -21,9 +53,6 @@ var pickedStyle = {
     "color": 'blue'
 };
 
-var smallLoaderHTML = "<img src='./images/ajax_loader.gif'>";
-var bigLoaderHTML = "<img src='./images/ajax_loader1.gif'>";
-
 function onEachFeature (feature, layer) {
     var coord;
     var country = '';
@@ -44,19 +73,11 @@ function onEachFeature (feature, layer) {
 // LAYER CLICK EVENT HANDLER
 
     layer.on('click', function (e) {
-        $('#city').empty();
-        $('#weather').css('visibility','hidden');
-        $('#temp').empty();
-        $('#newsSpace').empty();
-        $('#backgroundSpace').empty();
-
-        $('#city').append(smallLoaderHTML);
-        $('#temp').append(smallLoaderHTML);
-        $('#newsSpace').append(bigLoaderHTML);
-        $('#backgroundSpace').append(bigLoaderHTML);
-
+        showDivs();
+        showLoader();
         layer.setStyle(pickedStyle);
         feature.properties.picked = true;
+        $('#map').css('height','30rem');
 
         coord = e.latlng;
         var lat = (coord.lat).toFixed(2);
@@ -71,3 +92,5 @@ var geojsonTileLayer = new L.GeoJSON(countriesData, {
 });
 
 map.addLayer(geojsonTileLayer);
+
+map.setMaxBounds(geojsonTileLayer.getBounds());
