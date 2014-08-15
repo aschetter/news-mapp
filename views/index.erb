@@ -52,7 +52,7 @@
 
     <!-- CITY/ COUNTRY/ WEATHER/ TEMP ROW -->
 
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row" id="geography">
 
     <!-- CITY -->
@@ -99,21 +99,34 @@
     <!-- COUNTRY BACKGROUND TEMPLATE -->
 
     <script type="text/template" id="backgroundTemplate">
-        <h4><u>Background Information</u></h4>
-        {{ backgroundInfo.extract }}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Background Information</h3>
+            </div>
+            <div class="panel-body">
+                {{ backgroundInfo.extract }}
+            </div>
+        </div>
     </script>
 
     <!-- NEWS TEMPLATE -->
 
     <script type="text/template" id="newsTemplate">
-        <h5>Country News</h5>
-        <ul>
-            <li><a href="{{ stories[0].link }}">{{ stories[0].title }}</a></li>
-            <li><a href="{{ stories[1].link }}">{{ stories[1].title }}</a></li>
-            <li><a href="{{ stories[2].link }}">{{ stories[2].title }}</a></li>
-            <li><a href="{{ stories[3].link }}">{{ stories[3].title }}</a></li>
-            <li><a href="{{ stories[4].link }}">{{ stories[4].title }}</a></li>
-        </ul>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Recent Country News</h3>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="{{ stories[0].link }}">{{ stories[0].title }}</a></li>
+              <li class="list-group-item"><a href="{{ stories[1].link }}">{{ stories[1].title }}</a></li>
+              <li class="list-group-item"><a href="{{ stories[1].link }}">{{ stories[2].title }}</a></li>
+              <li class="list-group-item"><a href="{{ stories[1].link }}">{{ stories[3].title }}</a></li>
+              <li class="list-group-item"><a href="{{ stories[1].link }}">{{ stories[4].title }}</a></li>
+            </ul>
+        </div>
+
     </script>
 
     <!-- JQUERY -->

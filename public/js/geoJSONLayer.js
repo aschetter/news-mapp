@@ -78,9 +78,8 @@ function onEachFeature (feature, layer) {
         var lng = (coord.lng).toFixed(2);
 
         map.fitBounds(map.getBounds());
-        map.getZoom();
         map.invalidateSize(false);
-        // map.setView([lat, lng]);
+        map.setView([lat, lng]);
         getStories(country, lat, lng);
     });
 }

@@ -1,6 +1,7 @@
 require 'faraday'
 require 'faraday_middleware'
 require 'npr'
+require 'pry-byebug'
 
 def getNPR(country)
 
@@ -12,14 +13,13 @@ def getNPR(country)
 
   client = NPR::API::Client.new(apiKey: NPR.config.apiKey)
   response = client.query(searchTerm: country, numResults: "5")
-  
+  # binding.pry
   @stories = []
 
   response.list.stories.each do |story|
-    @stories << {title: story.title, link: story.links.first.content}
+    @stories << { title: story.title, link: story.links.first.content, 
+      teaser: story.teaser, first_paragraph: story.text.paragraphs.first }
   end
-
-  puts @stories
 
   @stories.to_json
 end
