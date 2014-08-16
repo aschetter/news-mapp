@@ -23,6 +23,22 @@
 
 <body>
 
+    <!-- WELCOME MODAL -->
+
+    <div class="modal fade" id="welcome" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Welcome to news mApp!</h4>
+          </div>
+          <div class="modal-body">
+            <p>Click a location to see its local weather, country news and background information.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- TITLE HEADER -->
 
     <div class="container">
@@ -155,6 +171,8 @@
     <!-- LEAFLET JS -->
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
+    <!-- MODAL -->
+    <script src="/js/modal.js"></script>
     <!-- GeoJSON COUNTRY DATA -->
     <script src="/js/world.js"></script>
     <!-- DATE JS -->
