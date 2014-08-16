@@ -28,7 +28,7 @@ body {
 
 #map {
     height: 70rem;
-    /*transition: height 0.8s ease-in-out;*/
+    transition: height 0.7s ease-in-out;
 }
 
 #weather {
@@ -61,5 +61,6 @@ body {
 }
 
 #temp {
+    margin-top: 2rem;
     font-size: 7rem;
 }

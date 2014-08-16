@@ -77,10 +77,12 @@ function onEachFeature (feature, layer) {
         var lat = (coord.lat).toFixed(2);
         var lng = (coord.lng).toFixed(2);
 
-        map.fitBounds(map.getBounds());
-        map.invalidateSize(false);
-        map.setView([lat, lng]);
-        apiCalls(country, lat, lng);
+        // apiCalls(country, lat, lng);
+
+        setTimeout(function() {
+            map.invalidateSize(false);
+            map.setView([lat, lng]);
+        }, 550);
     });
 }
 

@@ -2,12 +2,19 @@ function apiCalls (country, lat, lng) {
     
 // NPR AJAX CALL
 
-    var nprUrl = '/search/' + country
+    var nprUrl = '/search/' + country;
+    // var newsLoaded = false;
+    // var weatherLoaded = false;
 
     $.getJSON(nprUrl).complete(function(data) {
         var stories = data.responseJSON;
         renderNewsTemplate(stories);
         $('#newsSpace').show();
+
+        // newsLoaded = true;
+        // if (weatherLoaded && newsLoaded) {
+        //     $(".citynews").eqHeight();
+        // };
     });
 
 // BACKGROUND INFO AJAX CALL
@@ -27,7 +34,7 @@ function apiCalls (country, lat, lng) {
     
 // WEATHER/ CITY AJAX CALL
 
-    var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&mode=json&units=imperial'
+    var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&mode=json&units=imperial';
 
     $.getJSON(weatherUrl).complete(function(data) {
         var city = data.responseJSON.name;
@@ -45,6 +52,12 @@ function apiCalls (country, lat, lng) {
 
         renderWeatherTemplate(condition);
         $('#weather').css('visibility','visible').show();
+
+        // weatherLoaded = true;
+        // if (weatherLoaded && newsLoaded) {
+        //     $(".citynews").eqHeight();
+        // };
     });
+
     
 }
