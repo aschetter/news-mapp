@@ -31,10 +31,6 @@ body {
     transition: height 0.7s ease-in-out;
 }
 
-#weather {
-    display: none;
-}
-
 #location {
     display: none;
 }

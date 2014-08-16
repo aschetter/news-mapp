@@ -77,7 +77,7 @@ function onEachFeature (feature, layer) {
         var lat = (coord.lat).toFixed(2);
         var lng = (coord.lng).toFixed(2);
 
-        // apiCalls(country, lat, lng);
+        apiCalls(country, lat, lng);
 
         setTimeout(function() {
             map.invalidateSize(false);
