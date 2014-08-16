@@ -35,12 +35,21 @@ body {
     transition: height 0.7s ease-in-out;
 }
 
+#locationPanel {
+    background-image: -webkit-linear-gradient(top, navy 0, navy 100%);
+    color: white;
+}
+
+#headerPanel {
+    background-image: -webkit-linear-gradient(top, lightsteelblue 0, lightsteelblue 100%);
+}
+
 #location {
     display: none;
 }
 
 #city {
-    font-size: 1rem;
+    font-size: 1.4rem;
     display: none;
 }
 
