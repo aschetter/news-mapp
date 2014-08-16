@@ -30,10 +30,15 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Welcome to news mApp!</h4>
+            <h4 class="modal-title text-center" id="myModalLabel">Welcome to news mApp!</h4>
           </div>
           <div class="modal-body">
-            <p>Click a location to see its local weather, country news and background information.</p>
+            <p>Click a location to see its:</p>
+            <ul>
+                <li>Local Weather</li>
+                <li>Country News</li>
+                <li>Background Information</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -41,20 +46,30 @@
 
     <!-- TITLE HEADER -->
 
-    <div class="container">
+    <div class="container" id="titleHeader">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="title">news mApp</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right" id="date"></div>
         </div>
     </div>
 
     <!-- TOP BAR -->
 
     <div class="container">
-        <div class="row" id="top-bar">
-            <div class="col-xs-5 col-sm-4 col-md-6 col-lg-6">Click a country</div>
-            <div class="col-xs-7 col-sm-8 col-md-6 col-lg-6 pull-right" id="date"></div>
+        <div class="row text-center" id="top-bar">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 navLink"><a href="#weather">Local Weather</a></div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 navLink"><a href="#news">Country News</a></div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><a href="#background">Background Information</a></div>
         </div>
     </div>
+
+
+
+
+
+<a name="weather"></a>
+<a name="news"></a>
+<a name="background"></a>
 
     <!-- MAP CONTAINER -->
 
