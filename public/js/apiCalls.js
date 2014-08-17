@@ -20,12 +20,12 @@ function apiCalls (country, lat, lng) {
             if (pages.hasOwnProperty(pageId)) {
                 var backgroundInfo = pages[pageId];
                 renderBackgroundTemplate(backgroundInfo, country);
-                $('#background').show();
+                $('#backgroundSpace').show();
             }
         }
     });
     
-// WEATHER/ CITY AJAX CALL
+// WEATHER & CITY AJAX CALL
 
     var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&mode=json&units=imperial';
 
@@ -34,17 +34,17 @@ function apiCalls (country, lat, lng) {
         var temp = data.responseJSON.main.temp;
         temp = parseInt(temp);
         var condition = data.responseJSON.weather[0].main.toLowerCase();
-
+        
         country = country.toUpperCase();
 
-        renderLocationTemplate(city, country);
-        $('#location').show();
+        renderCityTemplate(city, country);
+        $('#citySpace').show();
         
-        renderCityTemplate(temp, condition);
-        $('#city').show();
+        renderWeatherTemplate(temp, condition);
+        $('#weatherSpace').show();
 
-        renderWeatherTemplate(condition);
-        $('#weather').css('visibility','visible').show();
+        renderIconTemplate(condition);
+        $('#iconSpace').css('visibility','visible').show();
     });
 
     

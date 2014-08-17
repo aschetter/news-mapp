@@ -1,11 +1,11 @@
 // SHOW ALL DIVS AFTER FIRST MAP CLICK
 
 function showDivs () {
-    $('#location').show();
-    $('#city').show();
-    $('#weather').css('visibility','visible').show();
+    $('#citySpace').show();
+    $('#weatherSpace').show();
+    $('#iconSpace').css('visibility','visible').show();
     $('#newsSpace').show();
-    $('#background').show();
+    $('#backgroundSpace').show();
 };
 
 // AJAX LOADER
@@ -13,9 +13,9 @@ function showDivs () {
 var loaderHTML = "<img src='./images/ajax_loader.gif'>";
 
 function showLoader () {
-    $('#location').html(loaderHTML);
-    $('#city').html(loaderHTML);
-    $('#weather').hide();
+    $('#citySpace').html(loaderHTML);
+    $('#weatherSpace').html(loaderHTML);
+    $('#iconSpace').hide();
     $('#newsSpace').html(loaderHTML);
     $('#backgroundSpace').html(loaderHTML);
 };
@@ -65,7 +65,7 @@ function onEachFeature (feature, layer) {
 // LAYER CLICK EVENT HANDLER
 
     layer.on('click', function (e) {
-        $('#map').css('height','30rem');
+        $('#mapSpace').css('height','30rem');
 
         showDivs();
         showLoader();

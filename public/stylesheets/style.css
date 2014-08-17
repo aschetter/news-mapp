@@ -10,19 +10,19 @@ body {
     
 }
 
-#title {
+#titleSpace {
     height: 6rem;
     font-size: 4rem;
 }
 
-#top-bar {
+#topBar {
     font-size: 2rem;
     margin-bottom: 2rem;
     border-style: double;
     border-color: black white black white;
 }
 
-#date {
+#dateSpace {
     border-top: 1px solid gray;
 }
 
@@ -30,12 +30,12 @@ body {
     border-bottom: 1px solid gray;
 }
 
-#map {
+#mapSpace {
     height: 70rem;
     transition: height 0.7s ease-in-out;
 }
 
-#locationPanel {
+#cityPanel {
     background-image: -webkit-linear-gradient(top, navy 0, navy 100%);
     color: white;
 }
@@ -44,32 +44,24 @@ body {
     background-image: -webkit-linear-gradient(top, lightsteelblue 0, lightsteelblue 100%);
 }
 
-#location {
+#citySpace {
     display: none;
 }
 
-#city {
+#weatherSpace, 
+#newsSpace, 
+#backgroundSpace {
     font-size: 1.4rem;
     display: none;
 }
 
-#weather {
+#iconSpace {
     width: 12rem;
     height: 7rem;
     display: none;
 }
 
-#newsSpace {
-    font-size: 1.4rem;
-    display: none;
-}
-
-#background {
-    font-size: 1.4rem;
-    display: none;
-}
-
-#temp {
+#tempSpace {
     margin-top: 2rem;
     font-size: 7rem;
 }
@@ -78,15 +70,13 @@ body {
   padding-top: 20%;
 }
 
-
 @media(min-width:768px) {
-
     .navLink {
         border-right: 1px solid gray;
         border-bottom: 0px;
     }
 
-    #date {
+    #dateSpace {
         text-align: right;
         border-top: 0px;
     }

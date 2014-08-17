@@ -1,22 +1,22 @@
-// LOCATION TEMPLATE RENDERING
-
-var renderLocationTemplate = function (city, country) {
-    var locationTemplate = _.template($("#locationTemplate").html());
-    var resultingHtml = locationTemplate({city: city, country: country});
-    $("#location").html(resultingHtml);
-};
-
 // CITY TEMPLATE RENDERING
 
-var renderCityTemplate = function (temp, condition) {
+var renderCityTemplate = function (city, country) {
     var cityTemplate = _.template($("#cityTemplate").html());
-    var resultingHtml = cityTemplate({temp: temp, condition: condition});
-    $("#city").html(resultingHtml);
+    var resultingHtml = cityTemplate({city: city, country: country});
+    $("#citySpace").html(resultingHtml);
 };
 
 // WEATHER TEMPLATE RENDERING
 
-var renderWeatherTemplate = function (condition) {
+var renderWeatherTemplate = function (temp, condition) {
+    var weatherTemplate = _.template($("#weatherTemplate").html());
+    var resultingHtml = weatherTemplate({temp: temp, condition: condition});
+    $("#weatherSpace").html(resultingHtml);
+};
+
+// WEATHER ICON TEMPLATE RENDERING
+
+var renderIconTemplate = function (condition) {
 
     if (condition.indexOf("cloud") > -1) {
       output = "CLOUDY";
@@ -55,7 +55,7 @@ var renderWeatherTemplate = function (condition) {
     var display = "Skycons." + output;
     var skycons = new Skycons({"color": "black"});
 
-    skycons.add("weather", eval(display));
+    skycons.add("iconSpace", eval(display));
 };
 
 // NEWS STORIES TEMPLATE RENDERING

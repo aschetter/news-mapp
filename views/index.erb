@@ -48,18 +48,18 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="title">news mApp</div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="date"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="titleSpace">news mApp</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="dateSpace"></div>
         </div>
     </div>
 
     <!-- TOP BAR -->
 
     <div class="container">
-        <div class="row text-center" id="top-bar">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 navLink"><a href="#city">Local Weather</a></div>
+        <div class="row text-center" id="topBar">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 navLink"><a href="#weatherSpace">Local Weather</a></div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 navLink"><a href="#newsSpace">Country News</a></div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><a href="#background">Background Information</a></div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><a href="#backgroundSpace">Background Information</a></div>
         </div>
     </div>
 
@@ -70,7 +70,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="panel-title text-center" id="map">
+                        <div class="panel-title text-center" id="mapSpace">
                         </div>
                     </div>
                 </div>
@@ -78,36 +78,36 @@
         </div>
     </div>
 
-    <!-- LOCATION CONTAINER -->
+    <!-- CITY CONTAINER -->
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="location"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="citySpace"></div>
         </div>
     </div>
 
-    <!-- CITY AND NEWS CONTAINER -->
+    <!-- WEATHER AND NEWS CONTAINER -->
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="city"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="weatherSpace"></div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="newsSpace"></div>
         </div>
     </div>
 
     <!-- BACKGROUND CONTAINER -->
 
-    <div class="container" id="background">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12" id="backgroundSpace"></div>
         </div>
     </div>
 
-    <!-- LOCATION TEMPLATE -->
+    <!-- CITY TEMPLATE -->
 
-    <script type="text/template" id="locationTemplate">
+    <script type="text/template" id="cityTemplate">
         <div class="panel panel-default">
-            <div class="panel-heading" id="locationPanel">
+            <div class="panel-heading" id="cityPanel">
                 <div class="panel-title text-center">
                     <h3>{{ country }}</h3>
                     <h4>{{ city }}</h4>
@@ -116,9 +116,9 @@
         </div>
     </script>
 
-    <!-- CITY TEMPLATE -->
+    <!-- WEATHER TEMPLATE -->
 
-    <script type="text/template" id="cityTemplate">
+    <script type="text/template" id="weatherTemplate">
         <div class="panel panel-default">
             <div class="panel-heading" id="headerPanel">
                 <h2 class="panel-title">Local Weather</u></h2>
@@ -126,11 +126,11 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                        <canvas id="weather"></canvas>
+                        <canvas id="iconSpace"></canvas>
                         <h1>{{ condition }}</h1>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right text-center">
-                        <p id="temp">{{ temp}}°F</p>
+                        <p id="tempSpace">{{ temp}}°F</p>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,6 @@
     <!-- NEWS TEMPLATE -->
 
     <script type="text/template" id="newsTemplate">
-
         <div class="panel panel-default">
             <div class="panel-heading" id="headerPanel">
                 <h3 class="panel-title">Country News</h3>
@@ -223,7 +222,6 @@
                 </div>
             </div>
         </div>
-
     </script>
 
     <!-- BACKGROUND TEMPLATE -->

@@ -1,10 +1,10 @@
 // SET DATE IN TOP BAR
 
 var months = ["January", "February", "March", "April", "May", "June", 
-"July", "August", "September", "October", "November", "December"]
+"July", "August", "September", "October", "November", "December"];
 
 var days = ["Sunday", "Monday", "Tuesday",
-"Wednesday", "Thursday", "Friday", "Saturday"]
+"Wednesday", "Thursday", "Friday", "Saturday"];
 
 var now = new Date();
 
@@ -15,4 +15,4 @@ var day = now.getDay().toString();
 
 var today = days[day] + " " + months[month] + " " + date + ", " + year;
 
-$('#date').html(today);
+$('#dateSpace').html(today);
