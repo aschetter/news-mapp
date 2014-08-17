@@ -68,8 +68,8 @@ var renderNewsTemplate = function (stories) {
 
 // BACKGROUND INFO TEMPLATE RENDERING
 
-var renderBackgroundTemplate = function (backgroundInfo) {
+var renderBackgroundTemplate = function (backgroundInfo, country) {
     var backgroundTemplate = _.template($("#backgroundTemplate").html());
-    var resultingHtml = backgroundTemplate({backgroundInfo: backgroundInfo});
+    var resultingHtml = backgroundTemplate({backgroundInfo: backgroundInfo, country: country});
     $("#backgroundSpace").html(resultingHtml);
 };

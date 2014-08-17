@@ -10,10 +10,6 @@ body {
     
 }
 
-#titleHeader {
-    margin-bottom: 0.5rem;
-}
-
 #title {
     height: 6rem;
     font-size: 4rem;
@@ -24,6 +20,10 @@ body {
     margin-bottom: 2rem;
     border-style: double;
     border-color: black white black white;
+}
+
+#date {
+    border-top: 1px solid gray;
 }
 
 .navLink {
@@ -80,13 +80,14 @@ body {
 
 
 @media(min-width:768px) {
+
     .navLink {
         border-right: 1px solid gray;
         border-bottom: 0px;
     }
-}
 
-/*@media(max-width:767px){}
-@media(min-width:768px){}
-@media(min-width:992px){}
-@media(min-width:1200px){}*/
+    #date {
+        text-align: right;
+        border-top: 0px;
+    }
+}

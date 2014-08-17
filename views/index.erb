@@ -9,15 +9,15 @@
     <title>News mApp</title>
 
     <!-- BOOTSTRAP CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <!-- BOOTSTRAP THEME CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
     <!-- CSS STYLE SHEET -->
     <link rel="stylesheet" href="/stylesheets/style.css"/>
     <!-- LEAFLET CSS -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
     <!-- MODERNIZR -->
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
 
 </head>
 
@@ -26,7 +26,7 @@
     <!-- WELCOME MODAL -->
 
     <div class="modal fade" id="welcome" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -46,10 +46,10 @@
 
     <!-- TITLE HEADER -->
 
-    <div class="container" id="titleHeader">
+    <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="title">news mApp</div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left" id="date"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="date"></div>
         </div>
     </div>
 
@@ -147,7 +147,6 @@
             </div>
         </div>
 
-
         <div class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -235,14 +234,13 @@
                 <h3 class="panel-title">Background Information</h3>
             </div>
             <div class="panel-body">
-                {{ backgroundInfo.extract }}
+                {{ backgroundInfo.extract }} <a href="http://www.wikipedia.org/wiki/{{country }}">Read more at Wikipedia.</a>
             </div>
         </div>
     </script>
 
     <!-- JQUERY -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
     <!-- UNDERSCORE JS -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script type="text/javascript">_.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };</script>
@@ -268,8 +266,6 @@
 
     <!-- BOOTSTAP JS -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <!-- EQ-HEIGHT JS -->
-    <!-- <script src="/vendor/js/eqHeight.coffee/jquery.eqheight.js"></script> -->
 </body>
 
 </html>
