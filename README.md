@@ -1,4 +1,4 @@
-news-mapp
+## news-mapp
 
 Description: news-mapp is an interactive world map that shows local weather conditions, country background information and country news utilizing various APIs.
 
