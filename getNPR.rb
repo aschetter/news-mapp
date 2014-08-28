@@ -6,7 +6,7 @@ require 'pry-byebug'
 def getNPR(country)
 
   NPR.configure do |config|
-    config.apiKey         = ENV['NPR_API_KEY']
+    config.apiKey         = ENV["NPR_API_KEY"]
     config.sort           = "date descending"
     config.requiredAssets = "text"
   end
@@ -17,7 +17,7 @@ def getNPR(country)
 
   response.list.stories.each do |story|
     @stories << { title: story.title, link: story.links.first.content, 
-      teaser: story.teaser, first_paragraph: story.text.paragraphs.first }
+      teaser: story.teaser }
   end
 
   @stories.to_json

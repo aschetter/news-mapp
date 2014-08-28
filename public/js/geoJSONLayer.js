@@ -53,7 +53,6 @@ function onEachFeature (feature, layer) {
 
     layer.on('mouseover', function () {
         layer.setStyle(mouseOverStyle);
-        country = layer.feature.properties.name;
     });
 
 // LAYER MOUSEOUT EVENT HANDLER
@@ -64,7 +63,8 @@ function onEachFeature (feature, layer) {
 
 // LAYER CLICK EVENT HANDLER
 
-    layer.on('click', function (e) {
+    layer.on('click touch', function (e) {
+        country = layer.feature.properties.name;
         $('#mapSpace').css('height','30rem');
 
         showDivs();
