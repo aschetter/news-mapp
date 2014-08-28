@@ -7,7 +7,6 @@
 
 body {
     font-family: helvetica;
-    
 }
 
 #titleSpace {
@@ -22,11 +21,6 @@ body {
 #mapSpace {
     height: 70rem;
     transition: height 0.7s ease-in-out;
-}
-
-#cityPanel {
-    background-image: -webkit-linear-gradient(top, navy 0, navy 100%);
-    color: white;
 }
 
 #citySpace {

@@ -16,7 +16,11 @@ def getNPR(country)
   @stories = []
 
   response.list.stories.each do |story|
-    @stories << { title: story.title, link: story.links.first.content, 
+    date = story.storyDate.to_s
+    date = DateTime.parse(date)
+    story_date = "#{date.month}/#{date.day}/#{date.year}"
+
+    @stories << { title: story.title, date: story_date, link: story.links.first.content, 
       teaser: story.teaser }
   end
 

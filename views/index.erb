@@ -97,7 +97,6 @@
     <!-- CITY TEMPLATE -->
 
     <script type="text/template" id="cityTemplate">
- 
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="panel-title text-center">
@@ -149,7 +148,7 @@
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
@@ -159,12 +158,12 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        {{ stories[0].teaser }} <a href="{{ stories[0].link }}">Read more at NPR.</a>
+                        {{ stories[0].date }}: {{ stories[0].teaser }} <a href="{{ stories[0].link }}">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
@@ -174,12 +173,12 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{ stories[1].teaser }} <a href="{{ stories[1].link }}">Read more at NPR.</a>
+                        {{ stories[1].date }}: {{ stories[1].teaser }} <a href="{{ stories[1].link }}">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
@@ -189,12 +188,12 @@
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{ stories[2].teaser }} <a href="{{ stories[2].link }}">Read more at NPR.</a>
+                        {{ stories[2].date }}: {{ stories[2].teaser }} <a href="{{ stories[2].link }}">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
@@ -204,12 +203,12 @@
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{ stories[3].teaser }} <a href="{{ stories[3].link }}">Read more at NPR.</a>
+                        {{ stories[3].date }}: {{ stories[3].teaser }} <a href="{{ stories[3].link }}">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
@@ -219,12 +218,12 @@
                 </div>
                 <div id="collapseFive" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{ stories[4].teaser }} <a href="{{ stories[4].link }}">Read more at NPR.</a>
+                        {{ stories[4].date }}: {{ stories[4].teaser }} <a href="{{ stories[4].link }}">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-footer">Provided by: NPR News</div>
             </div>
         </div>
@@ -240,7 +239,7 @@
             <div class="panel-body">
                 {{ backgroundInfo.extract }} <a href="http://www.wikipedia.org/wiki/{{country }}">Read more at Wikipedia.</a>
             </div>
-            <div class="panel-footer">Provided by: Wikipedia</div>
+            <div class="panel-footer">Provided by: MediaWiki</div>
         </div>
     </script>
 
