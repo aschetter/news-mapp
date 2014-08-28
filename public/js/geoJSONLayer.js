@@ -6,6 +6,7 @@ function showDivs () {
     $('#iconSpace').css('visibility','visible').show();
     $('#newsSpace').show();
     $('#backgroundSpace').show();
+    $('#topBar').show();
 };
 
 // AJAX LOADER

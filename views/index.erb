@@ -54,16 +54,6 @@
         </div>
     </div>
 
-    <!-- TOP BAR -->
-
-    <div class="container">
-        <div class="row text-center" id="topBar">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 navLink"><a href="#weatherSpace">Local Weather</a></div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 navLink"><a href="#newsSpace">Country News</a></div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><a href="#backgroundSpace">Background Information</a></div>
-        </div>
-    </div>
-
     <!-- MAP CONTAINER -->
 
     <div class="container">
@@ -107,11 +97,19 @@
     <!-- CITY TEMPLATE -->
 
     <script type="text/template" id="cityTemplate">
-        <div class="panel panel-default">
-            <div class="panel-heading" id="cityPanel">
+ 
+        <div class="panel panel-primary">
+            <div class="panel-heading">
                 <div class="panel-title text-center">
                     <h4>{{ city }},</h4>
                     <h3>{{ country }}</h3>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="list-group text-center">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><a href="#weatherSpace" class="list-group-item list-group-item-info">Local Weather</a></div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><a href="#newsSpace" class="list-group-item list-group-item-info">Country News</a></div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><a href="#backgroundSpace" class="list-group-item list-group-item-info">Background Information</a></div>
                 </div>
             </div>
         </div>
@@ -120,8 +118,8 @@
     <!-- WEATHER TEMPLATE -->
 
     <script type="text/template" id="weatherTemplate">
-        <div class="panel panel-default">
-            <div class="panel-heading" id="headerPanel">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
                 <h2 class="panel-title">Local Weather</h2>
             </div>
             <div class="panel-body">
@@ -135,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="panel-footer" id="headerPanel">Provided by: OpenWeatherMap</div>
+            <div class="panel-footer">Provided by: OpenWeatherMap</div>
         </div>
     </script>
 
@@ -144,9 +142,9 @@
     <script type="text/template" id="newsTemplate">
 
         <div class="panel-group" id="accordion">
-        
-            <div class="panel panel-default">
-                <div class="panel-heading" id="headerPanel">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
                     <h2 class="panel-title">Country News</h2>
                 </div>
             </div>
@@ -226,10 +224,8 @@
                 </div>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading" id="headerPanel">
-                    <h4 class="panel-title">Provided by: NPR News</div>
-                </div>
+            <div class="panel panel-primary">
+                <div class="panel-footer">Provided by: NPR News</div>
             </div>
         </div>
     </script>
@@ -237,14 +233,14 @@
     <!-- BACKGROUND TEMPLATE -->
 
     <script type="text/template" id="backgroundTemplate">
-        <div class="panel panel-default">
-            <div class="panel-heading" id="headerPanel">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
                 <h2 class="panel-title">Background Information</h2>
             </div>
             <div class="panel-body">
                 {{ backgroundInfo.extract }} <a href="http://www.wikipedia.org/wiki/{{country }}">Read more at Wikipedia.</a>
             </div>
-            <div class="panel-footer" id="headerPanel">Provided by: Wikipedia</div>
+            <div class="panel-footer">Provided by: Wikipedia</div>
         </div>
     </script>
 

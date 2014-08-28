@@ -12,22 +12,11 @@ body {
 
 #titleSpace {
     height: 6rem;
-    font-size: 4rem;
-}
-
-#topBar {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    border-style: double;
-    border-color: black white black white;
+    font-size: 4.5rem;
 }
 
 #dateSpace {
     border-top: 1px solid gray;
-}
-
-.navLink {
-    border-bottom: 1px solid gray;
 }
 
 #mapSpace {
@@ -38,10 +27,6 @@ body {
 #cityPanel {
     background-image: -webkit-linear-gradient(top, navy 0, navy 100%);
     color: white;
-}
-
-#headerPanel {
-    background-image: -webkit-linear-gradient(top, lightsteelblue 0, lightsteelblue 100%);
 }
 
 #citySpace {
@@ -71,10 +56,6 @@ body {
 }
 
 @media(min-width:768px) {
-    .navLink {
-        border-right: 1px solid gray;
-        border-bottom: 0px;
-    }
 
     #dateSpace {
         text-align: right;
