@@ -50,7 +50,6 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="titleSpace">news-mapp</div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" id="dateSpace"></div>
         </div>
     </div>
 
@@ -158,7 +157,7 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        {{ stories[0].date }}: {{ stories[0].teaser }} <a href="{{ stories[0].link }}">Read more at NPR.</a>
+                        {{ stories[0].date }}: {{ stories[0].teaser }} <a href="{{ stories[0].link }}" target="_blank">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
@@ -173,7 +172,7 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{ stories[1].date }}: {{ stories[1].teaser }} <a href="{{ stories[1].link }}">Read more at NPR.</a>
+                        {{ stories[1].date }}: {{ stories[1].teaser }} <a href="{{ stories[1].link }}" target="_blank">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
@@ -188,7 +187,7 @@
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{ stories[2].date }}: {{ stories[2].teaser }} <a href="{{ stories[2].link }}">Read more at NPR.</a>
+                        {{ stories[2].date }}: {{ stories[2].teaser }} <a href="{{ stories[2].link }}" target="_blank">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
@@ -203,7 +202,7 @@
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{ stories[3].date }}: {{ stories[3].teaser }} <a href="{{ stories[3].link }}">Read more at NPR.</a>
+                        {{ stories[3].date }}: {{ stories[3].teaser }} <a href="{{ stories[3].link }}" target="_blank">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
@@ -218,7 +217,7 @@
                 </div>
                 <div id="collapseFive" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{ stories[4].date }}: {{ stories[4].teaser }} <a href="{{ stories[4].link }}">Read more at NPR.</a>
+                        {{ stories[4].date }}: {{ stories[4].teaser }} <a href="{{ stories[4].link }}" target="_blank">Read more at NPR.</a>
                     </div>
                 </div>
             </div>
@@ -237,7 +236,7 @@
                 <h2 class="panel-title">Background Information</h2>
             </div>
             <div class="panel-body">
-                {{ backgroundInfo.extract }} <a href="http://www.wikipedia.org/wiki/{{country }}">Read more at Wikipedia.</a>
+                {{ backgroundInfo.extract }} <a href="http://www.wikipedia.org/wiki/{{country }}" target="_blank">Read more at Wikipedia.</a>
             </div>
             <div class="panel-footer">Provided by: MediaWiki</div>
         </div>
@@ -257,8 +256,6 @@
     <script src="/js/modal.js"></script>
     <!-- GeoJSON COUNTRY DATA -->
     <script src="/js/world.js"></script>
-    <!-- DATE JS -->
-    <script src="/js/date.js"></script>
     <!-- GeoJSON LAYER DATA -->
     <script src="/js/geoJSONLayer.js"></script>
     <!-- MAP LAYER DATA -->
